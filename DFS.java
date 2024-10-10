@@ -1,12 +1,12 @@
 import java.util.*;
 
 public class DFS {
-    // Static inner class to represent an edge
-    static class Edge {
-        int source; // Source vertex
-        int destination; // Destination vertex
 
-        // Constructor
+    static class Edge {
+        int source; 
+        int destination; 
+
+
         Edge(int source, int destination) {
             this.source = source;
             this.destination = destination;
@@ -14,15 +14,15 @@ public class DFS {
     }
 
     static class GraphStructure {
-        int vertices; // Number of vertices
-        int[][] adjacencyMatrix; // Adjacency Matrix representation
+        int vertices; 
+        int[][] adjacencyMatrix;
 
-        // Constructor
+
         GraphStructure(int vertices) {
             this.vertices = vertices;
-            adjacencyMatrix = new int[vertices][vertices]; // Initialize the adjacency matrix
+            adjacencyMatrix = new int[vertices][vertices];
 
-            // Taking user input for the adjacency matrix
+
             System.out.println("Enter the adjacency matrix (0 for no edge, 1 for an edge):");
             Scanner scanner = new Scanner(System.in);
             for (int i = 0; i < vertices; i++) {
@@ -32,24 +32,24 @@ public class DFS {
             }
         }
 
-        // dfs traversal method
-        void dfs(int startVertex) {
-            boolean[] visited = new boolean[vertices]; // Track visited vertices
-            Stack<Integer> stck = new Stack<>(); // Create a stck for dfs
 
-            visited[startVertex] = true; // Mark the starting vertex as visited
-            stck.push(startVertex); // Enstck the starting vertex
+        void dfs(int startVertex) {
+            boolean[] visited = new boolean[vertices]; 
+            Stack<Integer> stck = new Stack<>(); 
+
+            visited[startVertex] = true; 
+            stck.push(startVertex); 
 
             while (!stck.isEmpty()) {
-                int vertex = stck.pop(); // Destck a vertex
-                System.out.print(vertex + " "); // Print the destckd vertex
+                int vertex = stck.pop(); 
+                System.out.print(vertex + " "); 
 
-                // Explore all adjacent vertices
+
                 for (int i = 0; i < vertices; i++) {
-                    // Check if there is an edge and if the vertex is not visited
+
                     if (adjacencyMatrix[vertex][i] == 1 && !visited[i]) {
-                        visited[i] = true; // Mark as visited
-                        stck.push(i); // Enstck the neighbor
+                        visited[i] = true;
+                        stck.push(i); 
                     }
                 }
             }
@@ -60,15 +60,13 @@ public class DFS {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter the number of vertices: ");
-        int numberOfVertices = scanner.nextInt(); // Get the number of vertices from user
-
-        // Create a graph with the given number of vertices
+        int numberOfVertices = scanner.nextInt(); 
+        
         GraphStructure graph = new GraphStructure(numberOfVertices);
 
         System.out.print("Enter the starting vertex for dfs: ");
-        int startVertex = scanner.nextInt(); // Get the starting vertex for dfs
-
+        int startVertex = scanner.nextInt();
         System.out.println("dfs traversal starting from vertex " + startVertex + ":");
-        graph.dfs(startVertex); // Perform dfs starting from the specified vertex
+        graph.dfs(startVertex); 
     }
 }
